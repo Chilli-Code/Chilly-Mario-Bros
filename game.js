@@ -76,7 +76,6 @@ function create(){
     .setOrigin(0, 1)
     .setGravityY(300)
     .setVelocityX(-50)
-
     this.enemy.anims.play('goomba-walk', true)
 
     this.collectibes = this.physics.add.staticGroup()
@@ -86,7 +85,6 @@ function create(){
     ('coin-idle', true)
 
     this.collectibes.create(200, config.height  - 40, 'supermushroom').anims.play('supermushroom-idle', true)
-
     this.physics.add.overlap(this.mario, this.collectibes, collectItem, null, this)
 
 
@@ -101,38 +99,42 @@ function create(){
 
 }
 
-function collectItem(mario, item){
+function collectItem (mario, item) {
     const { texture: { key } } = item
     item.destroy()
-    if(item.texture.key == 'coin'){
-        playAudio('coin-pickup', this, {volume: 0.1})
+
+    if (key === 'coin') {
+        playAudio('coin-pickup', this, { volume: 0.1 })
         addToScore(100, item, this)
-    }else if(key == 'supermushroom'){
+    } else if (key === 'supermushroom') {
         this.physics.world.pause()
         this.anims.pauseAll()
-        mario.isBlocked = true
-        playAudio('powerup', this, {volume: 0.1})
+        playAudio('powerup', this, { volume: 0.1 })
 
         let i = 0
-        const interval = setInterval(() =>{
+        const interval = setInterval(() => {
         i++
-        mario.anims.play(i % 2 == 0
+        mario.anims.play(i % 2 === 0
             ? 'mario-grown-idle'
             : 'mario-idle'
         )
-        },100)
+    }, 100)
 
+    mario.isBlocked = true
+    mario.isGrown = true
+
+    setTimeout(() => {
+        mario.setDisplaySize(18, 32)
+        mario.body.setSize(18, 32)
+
+        this.anims.resumeAll()
         mario.isBlocked = false
-        mario.isGrown = true
-        setInterval(() => {
-            mario.setDisplaySize(18, 32)
-            mario.body.setSize(18, 32)
-            clearInterval(interval)
-            this.physics.world.resume()
-            this.anims.resumeAll()
-        },1000)
+        clearInterval(interval)
+        this.physics.world.resume()
+    }, 1000)
     }
 }
+
 
 function addToScore (scoreToAdd, origin, game){
     const scoreText = game.add.text(
