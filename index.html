@@ -8,8 +8,78 @@
     <!-- <script type="text/javascript" src="./animation.js"></script> -->
     <script type="text/javascript" src="./phaser.min.js"></script>
     <script type="module" src="./game.js"></script>
+    <script type="module" src="./controls.js"></script>
 </head>
 <body>
-    <div id="game"></div>
+    
+
+    <!-- <div id="jumpButton" class="button">Jump</div> -->
+    <!-- <div id="crouchButton" class="button">Crouch</div> -->
+
+
+    <div id="device" class="centered">
+        
+        <div id="case">
+          <div id="top">
+            <div id="inner-top">
+              <div id="on-off-stripes">
+                <div id="on-off-stripes-inner"></div>
+              </div>
+              <span id="on-off-text">OFF ● ON</span>
+            </div>
+          </div>
+          <div id="display-border" class="centered">
+            <div id="dot-matrix-stripes"></div>
+            <div id="dot-matrix-text">DOT MATRIX WITH STEREO SOUND</div>
+            <div id="battery-dot"></div>
+            <div id="battery-text">BATTERY</div>
+            <div id="game"></div>
+        </div>
+          <div id="bottom">
+            <div class="sss">
+                <div id="joystick">
+                    <div id="joystickButton"></div>
+                </div><div id="a-b-button-wrapper">
+                  <div id="a-b-button">
+                      <div id="jumpButton" class="a-button gb-input"></div>
+                      <div id="crouchButton" class=" b-button gb-input"></div>
+                  </div>
+                  <div id="a-b-button-text">
+                      <div>A</div>
+                      <div>B</div>
+                  </div>
+                </div>
+            </div>
+            <div class="sss" style="justify-content:space-around">
+                <div id="select-start-button">
+                  <div id="select-button-wrapper">
+                    <div id="select-button" class="gb-input"></div>
+                    <div id="select-button-text">SELECT</div>
+                  </div>
+                  <div id="start-button-wrapper">
+                    <div id="start-button" class="gb-input"></div>
+                    <div id="start-button-text">START</div>
+                  </div>
+                </div>
+                    <div id="audio-boxes">
+                      <div class="audio-box-strip"></div>
+                      <div class="audio-box-strip"></div>
+                      <div class="audio-box-strip"></div>
+                      <div class="audio-box-strip"></div>
+                      <div class="audio-box-strip"></div>
+                      <div class="audio-box-strip"></div>
+                    </div>
+
+            </div>
+      
+            <div id="audio-phones">
+              <span id="audio-phones-text">PHONES</span>
+              <div id="audio-phones-stripes">
+                <div id="audio-phones-stripes-inner"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
 </html>
